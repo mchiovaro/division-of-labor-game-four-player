@@ -33,7 +33,7 @@ public class PelletScript : MonoBehaviour
     private int grabber_advanced;
     private int grabber_base;
 
-    private GameObject beeFree, beeRestricted, beeFree2, beeRestricted2;
+    private GameObject beeFree, beeRestricted, beeFree2, beeRestricted2, beeFreeMiddle, beeRestrictMiddle, beeFree2Middle, beeRestrict2Middle;
 
     public Dictionary<string, bool> my_colliders = new Dictionary<string, bool>() {{"bee_free",false}, {"bee_restricted",false}, {"bee_free2",false}, {"bee_restricted2",false}};
 
@@ -80,6 +80,10 @@ public class PelletScript : MonoBehaviour
         beeRestricted = GameObject.FindGameObjectWithTag("bee_restricted");
         beeFree2 = GameObject.FindGameObjectWithTag("bee_free2");
         beeRestricted2 = GameObject.FindGameObjectWithTag("bee_restricted2");
+        beeFreeMiddle = GameObject.FindGameObjectWithTag("bee_free_middle");
+        beeRestrictMiddle = GameObject.FindGameObjectWithTag("bee_restricted_middle");
+        beeFree2Middle = GameObject.FindGameObjectWithTag("bee_free2_middle");
+        beeRestrict2Middle = GameObject.FindGameObjectWithTag("bee_restricted2_middle");
         audioData = GetComponent<AudioSource>();
 
         //
@@ -415,7 +419,7 @@ public class PelletScript : MonoBehaviour
                   transform.position = beeFree.transform.position;
 
                   // put the pellet on it's back?
-                  beeFree.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+                  beeFreeMiddle.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
                 }
 
                 if(grabber_base == 2){
@@ -434,7 +438,7 @@ public class PelletScript : MonoBehaviour
                   transform.position = beeRestricted.transform.position;
 
                   // put the pellet on it's back?
-                  beeRestricted.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+                  beeRestrictMiddle.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
                 }
 
                 if(grabber_base == 3){
@@ -453,7 +457,7 @@ public class PelletScript : MonoBehaviour
                   transform.position = beeFree2.transform.position;
 
                   // put the pellet on it's back?
-                  beeFree2.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+                  beeFree2Middle.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
                 }
 
                 if(grabber_base == 4){
@@ -472,7 +476,7 @@ public class PelletScript : MonoBehaviour
                   transform.position = beeRestricted2.transform.position;
 
                   // put the pellet on it's back?
-                  beeRestricted2.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+                  beeRestrict2Middle.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
                 }
 
           }
@@ -575,7 +579,7 @@ public class PelletScript : MonoBehaviour
                 // set bee free as parent and put pellet on it's back
                 transform.SetParent(beeFree.transform);
                 transform.position = beeFree.transform.position;
-                beeFree.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+                beeFreeMiddle.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
                 beeFree.GetComponent<TouchScript.Behaviors.Transformer>().enabled = true;
               }
 
@@ -591,7 +595,7 @@ public class PelletScript : MonoBehaviour
                 // set bee free as parent and put pellet on it's back
                 transform.SetParent(beeRestricted.transform);
                 transform.position = beeRestricted.transform.position;
-                beeRestricted.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+                beeRestrictMiddle.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
                 beeRestricted.GetComponent<TouchScript.Behaviors.Transformer>().enabled = true;
               }
 
@@ -607,7 +611,7 @@ public class PelletScript : MonoBehaviour
                 // set bee free as parent and put pellet on it's back
                 transform.SetParent(beeFree2.transform);
                 transform.position = beeFree2.transform.position;
-                beeFree2.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+                beeFree2Middle.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
                 beeFree2.GetComponent<TouchScript.Behaviors.Transformer>().enabled = true;
               }
 
@@ -623,7 +627,7 @@ public class PelletScript : MonoBehaviour
                 // set bee free as parent and put pellet on it's back
                 transform.SetParent(beeRestricted2.transform);
                 transform.position = beeRestricted2.transform.position;
-                beeRestricted2.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+                beeRestrict2Middle.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
                 beeRestricted2.GetComponent<TouchScript.Behaviors.Transformer>().enabled = true;
               }
 

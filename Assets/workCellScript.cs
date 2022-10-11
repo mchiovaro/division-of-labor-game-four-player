@@ -12,7 +12,7 @@ public class workCellScript : MonoBehaviour
 {
 
     GameObject pellet_;
-    private GameObject beeFree, beeRestricted, beeFree2, beeRestricted2;
+    private GameObject beeFree, beeRestricted, beeFree2, beeRestricted2, beeFreeMiddle, beeRestrictedMiddle, beeFree2Middle, beeRestricted2Middle;
     private bool free_contact_cell = false;
     private bool restrict_contact_cell = false;
     private bool free_contact_cell2 = false;
@@ -30,6 +30,10 @@ public class workCellScript : MonoBehaviour
         beeRestricted = GameObject.FindGameObjectWithTag("bee_restricted");
         beeFree2 = GameObject.FindGameObjectWithTag("bee_free2");
         beeRestricted2 = GameObject.FindGameObjectWithTag("bee_restricted2");
+        beeFreeMiddle = GameObject.FindGameObjectWithTag("bee_free_middle");
+        beeFree2Middle = GameObject.FindGameObjectWithTag("bee_free2_middle");
+        beeRestrictedMiddle = GameObject.FindGameObjectWithTag("bee_restricted_middle");
+        beeRestricted2Middle = GameObject.FindGameObjectWithTag("bee_restricted2_middle");
     }
 
     private void OnEnable()
@@ -154,7 +158,7 @@ public class workCellScript : MonoBehaviour
             pellet_.GetComponent<PelletScript>().advanced_pellet = true;
 
             // reset the bee color once they've dropped the pellet
-            beeRestricted.GetComponent<SpriteRenderer>().color = Color.blue;
+            beeRestrictedMiddle.GetComponent<SpriteRenderer>().color = Color.blue;
 
             // reset dropping taps to 0
             dropTapCounter = 0;
@@ -180,7 +184,7 @@ public class workCellScript : MonoBehaviour
             pellet_.GetComponent<PelletScript>().advanced_pellet = true;
 
             // reset the bee color once they've dropped the pellet
-            beeFree.GetComponent<SpriteRenderer>().color = Color.red;
+            beeFreeMiddle.GetComponent<SpriteRenderer>().color = Color.red;
 
             // reset dropping taps to 0
             dropTapCounter = 0;
@@ -206,7 +210,7 @@ public class workCellScript : MonoBehaviour
             pellet_.GetComponent<PelletScript>().advanced_pellet = true;
 
             // reset the bee color once they've dropped the pellet
-            beeRestricted2.GetComponent<SpriteRenderer>().color = Color.blue;
+            beeRestricted2Middle.GetComponent<SpriteRenderer>().color = Color.blue;
 
             // reset dropping taps to 0
             dropTapCounter = 0;
@@ -232,7 +236,7 @@ public class workCellScript : MonoBehaviour
             pellet_.GetComponent<PelletScript>().advanced_pellet = true;
 
             // reset the bee color once they've dropped the pellet
-            beeFree2.GetComponent<SpriteRenderer>().color = Color.red;
+            beeFree2Middle.GetComponent<SpriteRenderer>().color = Color.red;
 
             // reset dropping taps to 0
             dropTapCounter = 0;

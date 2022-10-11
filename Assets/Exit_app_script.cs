@@ -7,7 +7,7 @@ public class Exit_app_script : MonoBehaviour
 {
     float ScToWRatio; // some camera ratio?
     GameObject work_cells, drop_cells, spawn_cells;
-    public GameObject foodPrefab, beeFree, beeRestrict, beeFree2, beeRestrict2, buttons, messageboxes;
+    public GameObject foodPrefab, beeFree, beeRestrict, beeFree2, beeRestrict2, beeFreeMiddle, beeRestrictMiddle, beeFree2Middle, beeRestrict2Middle, buttons, messageboxes;
 
     // input parameters
     public int ParticipantNumber; // pulls from the excel sheet with conditions
@@ -131,6 +131,10 @@ public class Exit_app_script : MonoBehaviour
         beeRestrict = GameObject.FindGameObjectWithTag("bee_restricted");
         beeFree2 = GameObject.FindGameObjectWithTag("bee_free2");
         beeRestrict2 = GameObject.FindGameObjectWithTag("bee_restricted2");
+        beeFreeMiddle = GameObject.FindGameObjectWithTag("bee_free_middle");
+        beeRestrictMiddle = GameObject.FindGameObjectWithTag("bee_restricted_middle");
+        beeFree2Middle = GameObject.FindGameObjectWithTag("bee_free2_middle");
+        beeRestrict2Middle = GameObject.FindGameObjectWithTag("bee_restricted2_middle");
 
         // find buttons and message message boxes
         buttons = GameObject.FindGameObjectWithTag("buttons");
@@ -362,10 +366,10 @@ public class Exit_app_script : MonoBehaviour
           beeRestrict2.GetComponent<BeeTap>().grabbed_on = false;
 
           // reset the colors
-          beeFree.GetComponent<SpriteRenderer>().color = Color.red;
-          beeRestrict.GetComponent<SpriteRenderer>().color = Color.blue;
-          beeFree2.GetComponent<SpriteRenderer>().color = Color.red;
-          beeRestrict2.GetComponent<SpriteRenderer>().color = Color.blue;
+          beeFreeMiddle.GetComponent<SpriteRenderer>().color = Color.red;
+          beeRestrictMiddle.GetComponent<SpriteRenderer>().color = Color.blue;
+          beeFree2Middle.GetComponent<SpriteRenderer>().color = Color.red;
+          beeRestrict2Middle.GetComponent<SpriteRenderer>().color = Color.blue;
 
           // reset positions of players
           beeFree.transform.position = new Vector3(-3.25f, 2.7f, 0);
@@ -489,10 +493,10 @@ public class Exit_app_script : MonoBehaviour
             beeRestrict2.GetComponent<BeeTap>().grabbed_on = false;
 
             // reset the colors
-            beeFree.GetComponent<SpriteRenderer>().color = Color.red;
-            beeRestrict.GetComponent<SpriteRenderer>().color = Color.blue;
-            beeFree2.GetComponent<SpriteRenderer>().color = Color.red;
-            beeRestrict2.GetComponent<SpriteRenderer>().color = Color.blue;
+            beeFreeMiddle.GetComponent<SpriteRenderer>().color = Color.red;
+            beeRestrictMiddle.GetComponent<SpriteRenderer>().color = Color.blue;
+            beeFree2Middle.GetComponent<SpriteRenderer>().color = Color.red;
+            beeRestrict2Middle.GetComponent<SpriteRenderer>().color = Color.blue;
 
             // reset positions of players
             beeFree.transform.position = new Vector3(-3.25f, 2.7f, 0);
