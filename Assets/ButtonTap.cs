@@ -29,8 +29,10 @@ public class ButtonTap : MonoBehaviour
     public GameObject message_free, message_free2, message_restrict, message_restrict2;
 
     // create strings for holding the sets of button names
-    List<string> freebuttons = new List<string> { "button_free_1", "button_free_2", "button_free_3", "button_free_4", "button_free_5", "button_free_6", "button_free_7", "button_free_8", "button_free_9", "button_free_10"};
-    List<string> restrictbuttons = new List<string> { "button_restrict_1", "button_restrict_2", "button_restrict_3", "button_restrict_4", "button_restrict_5", "button_restrict_6", "button_restrict_7", "button_restrict_8", "button_restrict_9", "button_restrict_10"};
+    List<string> freebuttons = new List<string> { "button_free_1", "button_free_2", "button_free_3", "button_free_4", "button_free_6", "button_free_7", "button_free_8", "button_free_9"};
+    List<string> restrictbuttons = new List<string> { "button_restrict_1", "button_restrict_2", "button_restrict_3", "button_restrict_4", "button_restrict_6", "button_restrict_7", "button_restrict_8", "button_restrict_9"};
+    List<string> comeherebuttons = new List<string> { "button_restrict_5", "button_restrict_10", "button_restrict_5", "button_restrict_10"};
+
 
     private void Start()
     {
@@ -160,6 +162,17 @@ public class ButtonTap : MonoBehaviour
         StartCoroutine(waiter());
       }
 
+      // if it's a come here button
+      if(comeherebuttons.Contains(transform.name)){
+        // update the text
+        message_restrict.GetComponent<TMP_Text>().text = text;
+        message_restrict2.GetComponent<TMP_Text>().text = text;
+        message_free.GetComponent<TMP_Text>().text = text;
+        message_free2.GetComponent<TMP_Text>().text = text;
+        // set wait time
+        StartCoroutine(waiter());
+      }
+
     }
 
     IEnumerator waiter()
@@ -178,6 +191,16 @@ public class ButtonTap : MonoBehaviour
         yield return new WaitForSeconds(3);
         message_restrict.GetComponent<TMP_Text>().text = "";
         message_restrict2.GetComponent<TMP_Text>().text = "";
+      }
+
+      // if it's a come here button
+      if(comeherebuttons.Contains(transform.name)){
+        // wait for three seconds then turn the message off
+        yield return new WaitForSeconds(3);
+        message_restrict.GetComponent<TMP_Text>().text = "";
+        message_restrict2.GetComponent<TMP_Text>().text = "";
+        message_free.GetComponent<TMP_Text>().text = "";
+        message_free2.GetComponent<TMP_Text>().text = "";
       }
 
     }
