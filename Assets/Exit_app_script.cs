@@ -601,7 +601,6 @@ public class Exit_app_script : MonoBehaviour
                   if (round_number == 6){ui_text.text = "Round Finished.\nNext: Round six\n\n" + "ALL players can switch" + "\n\nRed players: Tapping condition " + FREE_HARD.ToString() + "\n\n Ready for the next round?";}
                 }
 
-
                 break;
 
             // if it's free < restrict, tell them their tapping order
@@ -690,8 +689,8 @@ public class Exit_app_script : MonoBehaviour
     void loadParams()
     {
 
-        // read in condition orders
-        TextAsset iniFile = Resources.Load<TextAsset>("loadParams/conditions_2-3");
+        // read in conditions (UPDATE SHEET NAME HERE BASED ON YOUR EXPERIMENT)
+        TextAsset iniFile = Resources.Load<TextAsset>("loadParams/conditions-leadership");
 
         // create string to split out rows of conditions
         string[] row = iniFile.text.Split(new char[] { '\n' });
@@ -734,13 +733,11 @@ public class Exit_app_script : MonoBehaviour
             // add the condition to a string
             ie_condition.Add(temp_ie);
 
-            // increase by 1 until we hit six (FIX: make this 7, one for trial round)
+            // increase by 1 until we hit six
             for (int ii = 8; ii < 14; ii++)
             {
                 // parse apart conditions from file going down column 1
                 int.TryParse(col[ii], out temp_ie);
-
-                //Debug.Log("temp_ie = " + temp_ie);
 
                 // add the condition to a string
                 ie_condition.Add(temp_ie);
@@ -754,25 +751,25 @@ public class Exit_app_script : MonoBehaviour
             // create temp variable to hold the condition
             int temp_com;
 
-            // parse apart condition from file column 8
+            // parse apart condition from file column
             int.TryParse(col[1], out temp_com);
             com_condition = temp_com;
 
-        // size_condition: number of participants
+        // leader_cond: leadership (formerly the size condition)
 
             // create temp variable to hold the condition
-            int temp_size;
+            int temp_leader;
 
-            // parse apart condition from file column 9
-            int.TryParse(col[14], out temp_size);
-            size_condition = temp_size;
+            // parse apart condition from file column
+            int.TryParse(col[14], out temp_leader);
+            leader_cond = temp_leader;
 
         // experiment_num
 
             // create temp variable to hold the condition
             int temp_exp;
 
-            // parse apart condition from file column 10
+            // parse apart condition from file column
             int.TryParse(col[16], out temp_exp);
             experiment_num = temp_exp;
 
