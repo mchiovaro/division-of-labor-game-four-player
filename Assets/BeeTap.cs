@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 public class BeeTap : MonoBehaviour
 {
     //bool contact_on = false;
-    public bool grabbed_on, freetapping, restricttapping;
+    public bool grabbed_on;
     public int tapID;
 
     Collider2D player_coll; // collider for the players
@@ -34,8 +34,6 @@ public class BeeTap : MonoBehaviour
     {
 
       grabbed_on = false;
-      freetapping = false;
-      restricttapping = false;
       tapID = 50;
       Debug.Log("GRABBED SET TO FALSE");
 

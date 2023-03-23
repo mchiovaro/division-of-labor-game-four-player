@@ -24,15 +24,15 @@ public class SpawnCellScript : MonoBehaviour
     // when a pellet spawns inside a spawn cell, it triggers it (does not physically collide)
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //contact_on = true;
+        contact_on = true;
         // this logs the contacts for both the pellets IN the cells and the player into the side of the cell
-        //Debug.Log("player made contact");
+        Debug.Log("pellet spawned");
     }
 
     // "Sent when another object leaves a trigger collider attached to this object (2D physics only)."
     private void OnTriggerExit2D(Collider2D other)
     {
-        //contact_on = false;
+        contact_on = false;
         //Debug.Log("player moved away");
     }
 

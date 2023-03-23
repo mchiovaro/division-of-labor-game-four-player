@@ -2914,10 +2914,11 @@ MonoBehaviour:
   beeRestrict2Middle: {fileID: 0}
   buttons: {fileID: 0}
   messageboxes: {fileID: 0}
-  ParticipantNumber: 47
+  ParticipantNumber: 1
   RA_initials: MC
   td_condition: 
   ie_condition: 
+  leader_condition: 0
   com_condition: 0
   size_condition: 0
   experiment_num: 0

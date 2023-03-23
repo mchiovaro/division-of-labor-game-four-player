@@ -1,7 +1,7 @@
 ##### Randomizing conditions for leadership experiment #####
 #
 # This script creates the randomized condition orders for 
-# the task allocation experiments.
+# the task allocation experiments
 #
 # Created by: M. Chiovaro (@mchiovaro)
 # Last updated: 2023_03_20
@@ -15,7 +15,7 @@ setwd("./Assets/Resources/loadParams/")
 set.seed(2023)
 
 # create a new data frame with condition columns
-df <- data.frame(matrix(ncol = 17, nrow = 45))
+df <- data.frame(matrix(ncol = 19, nrow = 45))
 
 # provide column names
 colnames(df) <- c('group_number', 'com_condition',
@@ -23,7 +23,8 @@ colnames(df) <- c('group_number', 'com_condition',
                   'td_5', 'td_6', 
                   'ie_1', 'ie_2', 'ie_3', 'ie_4', 
                   'ie_5', 'ie_6', 
-                  'leader_cond', 'practice', 'experiment_number')
+                  'group_size', 'practice_td', 'experiment_number',
+                  'practice_ie', 'leader_condition')
 
 ##### Experiment number #####
 df$experiment_number[1:45] <- 4
@@ -32,7 +33,7 @@ df$experiment_number[1:45] <- 4
 
 # for the practice round
 shuffled_practice <- sample(1:3, size = nrow(df), replace = TRUE)
-df$practice <- shuffled_practice
+df$practice_td <- shuffled_practice
 
 # for all rows - create the random task condition
 for (i in 1:nrow(df)){
@@ -63,12 +64,12 @@ for (i in 1:nrow(df)){
 
 ##### Individual effectivities condition #####
 
-# for all rounds of this experiment, allow them to both switch
-df$practice_ie[1:45] <- 3
+# for the practice round, let both switch so they can both practice
+df$practice_ie <- 3
 
-# for all rows, create add ie as 3
+# for all rows, create the random ie condition
 for (i in 1:nrow(df)){
-  for (j in 9:14){
+  for(j in 9:14){
     df[i,j] <- 3
   }
 }
@@ -76,10 +77,13 @@ for (i in 1:nrow(df)){
 ##### Communication condition #####
 df$com_condition[1:45] <- 3
 
-##### Leadership condition#####
-df$leader_cond[1:15] <- 1
-df$leader_cond[16:30] <- 2
-df$leader_cond[31:45] <- 3
+##### Group size #####
+df$group_size[1:45] <- 4
+
+##### Leadership condition #####
+df$leader_condition[1:15] <- 1
+df$leader_condition[16:30] <- 2
+df$leader_condition[31:45] <- 3
 
 ##### Shuffling rows #####
 shuffled_data = df[sample(1:45), ]
@@ -89,7 +93,7 @@ shuffled_data$group_number <- seq.int(nrow(shuffled_data))
 
 # write shuffled data to file
 write.table(x = shuffled_data,
-            file='./conditions-leadership.csv',
+            file='./conditions_leadership.csv',
             sep=",",
             col.names=TRUE,
             row.names=FALSE)

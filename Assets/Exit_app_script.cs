@@ -20,6 +20,7 @@ public class Exit_app_script : MonoBehaviour
     public List<int> td_condition = new List<int>(7);
     public List<int> ie_condition = new List<int>(7); // add list for ie conditions within
     //public int ie_condition;
+    public int leader_condition;
     public int com_condition;
     public int size_condition;
     public int experiment_num;
@@ -195,8 +196,6 @@ public class Exit_app_script : MonoBehaviour
                     next_spawn = Time.time + spawn_rate[current_spawn];
                     current_spawn++;
 
-                    int rand_ini = Random.Range(0, avail_spawn.Count);
-
                     // spawn a pellet prefab
                     // find all pellets on the field
                     pels = GameObject.FindGameObjectsWithTag("pellet");
@@ -324,6 +323,7 @@ public class Exit_app_script : MonoBehaviour
                     + com_condition + ","
                     + size_condition + ","
                     + experiment_num + ","
+                    + leader_condition + ","
                     + beeFree.transform.position.x + ","
                     + beeFree.transform.position.y + ","
                     + beeRestrict.transform.position.x + ","
@@ -690,7 +690,7 @@ public class Exit_app_script : MonoBehaviour
     {
 
         // read in conditions (UPDATE SHEET NAME HERE BASED ON YOUR EXPERIMENT)
-        TextAsset iniFile = Resources.Load<TextAsset>("loadParams/conditions-leadership");
+        TextAsset iniFile = Resources.Load<TextAsset>("loadParams/conditions_leadership");
 
         // create string to split out rows of conditions
         string[] row = iniFile.text.Split(new char[] { '\n' });
@@ -755,14 +755,25 @@ public class Exit_app_script : MonoBehaviour
             int.TryParse(col[1], out temp_com);
             com_condition = temp_com;
 
-        // leader_cond: leadership (formerly the size condition)
+
+        // size_condition
+
+            // create temp variable to hold the condition
+            int temp_size;
+
+            // parse apart condition from file column
+            int.TryParse(col[14], out temp_size);
+            size_condition = temp_size;
+
+
+        // leader_condition: leadership (formerly the size condition)
 
             // create temp variable to hold the condition
             int temp_leader;
 
             // parse apart condition from file column
-            int.TryParse(col[14], out temp_leader);
-            leader_cond = temp_leader;
+            int.TryParse(col[18], out temp_leader);
+            leader_condition = temp_leader;
 
         // experiment_num
 
